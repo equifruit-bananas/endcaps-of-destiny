@@ -23,28 +23,32 @@
 
 <div class="buttons">
 
-<div onclick="generate()" class="card">
+<div onclick="generate('assassin')" class="card">
 <img src="assets/assassin.png">
 <button class="label">Assassin</button>
-<p class="desc">Silent but deadly. Your endcaps sell before anyone notices.</p>
+<p class="desc"> Strategic. Sneaky. Always one step ahead.
+You slip Fairtrade bananas onto shelves before anyone sees it coming.</p>
 </div>
 
-<div onclick="generate()" class="card">
+<div onclick="generate('bulldozer')" class="card">
 <img src="assets/bulldozer.png">
 <button class="label">Bulldozer</button>
-<p class="desc">You move volume like a force of nature. Banana domination mode.</p>
+<p class="desc">Relentless. Loud. Impossible to ignore.
+You move bananas like a force of nature — Fairtrade domination mode ON.</p>
 </div>
 
-<div onclick="generate()" class="card">
+<div onclick="generate('curious')" class="card">
 <img src="assets/curious.png">
 <button class="label">Curious</button>
-<p class="desc">Always testing, always learning. The Fairtrade future starts here.</p>
+<p class="desc">Open-minded. Exploring. Not convinced… yet.
+You’re circling the movement — one step closer to banana badassery.</p>
 </div>
 
-<div onclick="generate()" class="card">
+<div onclick="generate('nerd')" class="card">
 <img src="assets/nerd.png">
 <button class="label">Nerd</button>
-<p class="desc">Data is your superpower. You optimize every banana move.</p>
+<p class="desc">Data-driven. Detail-obsessed. Always right.
+You win with facts, impact, and serious banana knowledge.</p>
 </div>
 
 </div>
@@ -52,9 +56,15 @@
 <div id="loading" class="hidden">Generating...</div>
 
 <div id="result" class="hidden">
+
+<!-- 👇 MOVE BUTTON HERE -->
+<button class="retry" onclick="regenerate()">Spin again</button>
+
 <h3 class="gamertitle">YOUR GAMERTAG</h3>
 <div id="tag"></div>
+
 <button class="share" onclick="share()">Share on LinkedIn</button>
+
 </div>
 
 <div id="copyMsg" class="copy-msg" style="display:none;">
