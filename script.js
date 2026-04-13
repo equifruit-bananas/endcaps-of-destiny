@@ -96,50 +96,58 @@ function share(){
 
   let tag = document.getElementById("tag").innerText;
 
-  let text = `I got my Endcaps of Destiny gamertag: "${tag}" 🎮🍌 Think you can beat me at #CPMA2026?`;
+  // ✅ ADD LINK TO CAPTION
+  let text = `I got my Endcaps of Destiny gamertag: "${tag}" 🎮🍌 Think you can beat me at #CPMA2026?\n\nPlay here 👉 ${window.location.href}`;
 
   let msg = document.getElementById("copyMsg");
 
-  // detect mobile
   let isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
   let url;
 
+  // 💻 Desktop → try prefill
   if(!isMobile){
     url = "https://www.linkedin.com/feed/?shareActive=true&text=" + encodeURIComponent(text);
-  } else {
+  } 
+  // 📱 Mobile → link only
+  else{
     url = "https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(window.location.href);
   }
 
-  // ✅ COPY FIRST (critical for mobile)
+  // 🔁 fallback copy (mobile-safe)
+  function fallbackCopy(text) {
+    let textarea = document.createElement("textarea");
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textarea);
+  }
+
+  // ✅ COPY FIRST
   navigator.clipboard.writeText(text).then(() => {
 
-    msg.innerText = "Caption copied. Paste it on your LinkedIn 👇";
+    msg.innerText = "Caption + link copied ✅ Paste it on LinkedIn 👇";
     msg.style.display = "block";
-
-    // open after short delay
-    setTimeout(()=>{
-      window.open(url, "_blank");
-    }, 300);
-
-    setTimeout(()=>{
-      msg.style.display = "none";
-    }, 4000);
 
   }).catch(() => {
 
-    // 🔴 FALLBACK (very important for mobile)
-    msg.innerText = "Copy failed — long press to copy 👇";
+    fallbackCopy(text);
+
+    msg.innerText = "Copied! Paste it on LinkedIn 👇";
     msg.style.display = "block";
 
-    // fallback: show text in prompt
-    window.prompt("Copy your caption:", text);
-
-    setTimeout(()=>{
-      window.open(url, "_blank");
-    }, 800);
-
   });
+
+  // 🚀 OPEN FAST (after copy)
+  setTimeout(()=>{
+    window.open(url, "_blank");
+  }, 400);
+
+  // hide message
+  setTimeout(()=>{
+    msg.style.display = "none";
+  }, 4000);
 
 }
 
