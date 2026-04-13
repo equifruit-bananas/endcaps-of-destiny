@@ -98,25 +98,35 @@ function share(){
 
   let text = `I got my Endcaps of Destiny gamertag: "${tag}" 🎮🍌 Think you can beat me at #CPMA2026?`;
 
-  navigator.clipboard.writeText(text).then(() => {
+  // detect mobile
+  let isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-    // 👉 SHOW MESSAGE
-    let msg = document.getElementById("copyMsg");
-    msg.style.display = "block";
+  let url;
 
-    setTimeout(()=>{
-      msg.style.display = "none";
-    },5000);
+  // 💻 DESKTOP → try prefill
+  if(!isMobile){
+    url = "https://www.linkedin.com/feed/?shareActive=true&text=" + encodeURIComponent(text);
+  } 
+  // 📱 MOBILE → fallback
+  else{
+    url = "https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(window.location.href);
+  }
 
-    // 👉 OPEN LINKEDIN (slight delay for UX)
-    setTimeout(()=>{
-      let url = "https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(window.location.href);
-      window.open(url, "_blank");
-    }, 5000);
+  // 🚀 OPEN LINKEDIN IMMEDIATELY (KEY CHANGE)
+  window.open(url, "_blank");
 
-  }).catch(() => {
-    console.log("Copy failed");
-  });
+  // copy in background
+  navigator.clipboard.writeText(text);
+
+  // 👉 SHOW MESSAGE on your page
+  let msg = document.getElementById("copyMsg");
+  msg.innerText = "Caption copied. Paste it on your LinkedIn 👇";
+  msg.style.display = "block";
+
+  // hide after
+  setTimeout(()=>{
+    msg.style.display = "none";
+  }, 4000);
 
 }
 
