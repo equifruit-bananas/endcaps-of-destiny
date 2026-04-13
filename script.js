@@ -106,7 +106,7 @@ function share(){
 
 if(!isMobile){
   // 💻 Desktop → include link
-  text = ` I got my Endcaps of Destiny gamertag: "${tag}" 🎮🍌 https://equifruit-bananas.github.io/endcaps-of-destiny/ 👉 Think you can beat me at #CPMA2026?`;
+  text = `I got my Endcaps of Destiny gamertag: "${tag}" 🎮🍌 Think you can beat me at #CPMA2026 — come prove it at Equifruit Booth #638. 🔥 👉🏼Generate your gamertag here: https://equifruit-bananas.github.io/endcaps-of-destiny/`;
 } else {
   // 📱 Mobile → NO link (LinkedIn adds it automatically)
   text = `I got my Endcaps of Destiny gamertag: "${tag}" 🎮🍌 Think you can beat me at #CPMA2026?`;
