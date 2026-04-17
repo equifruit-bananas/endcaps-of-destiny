@@ -164,23 +164,35 @@ transform:scale(1.05);
 
 .share-incentive-sub{
   font-size:16px;
-  color:#ffffff;
+  color:#fbbb20;
   margin-bottom:20px;
 }
+
 .share-box{
-  background: rgba(46,38,36,0.85);
   padding: 25px;
   border-radius: 12px;
   display: block;
   max-width: 600px;
   margin: 20px auto;
+}
+
+.share-content{
+  background: rgba(46,38,36,0.85);
+  padding: 20px;
+  border-radius: 12px;
+  margin-top: 20px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
+
+
 .share-instruction{
-  font-size:18px;
+  font-size:22px; /* bigger */
+  font-weight:bold; /* stronger */
   color:#ffffff;
-  margin:10px 0 15px;
-  opacity:0.9;
+  margin:15px 0 20px;
+  padding:10px 15px;
+  border-radius:8px;
+  background: rgba(0,0,0,0.4); /* subtle highlight */
 }
 
 .tag-row{
